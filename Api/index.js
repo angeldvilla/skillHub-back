@@ -1,8 +1,7 @@
 
-const express = require ('express')
-const server = express()
-const PORT = 3001
+const server = require ('./src/app')
 
-server.listen(PORT , ()=> {
-    console.log(`Server raised in port ${PORT}`)
-})
+ server.listen(3001, () => {
+    console.log('%s listening at 3001');
+  });
+
