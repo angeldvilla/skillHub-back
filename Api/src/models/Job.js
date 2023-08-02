@@ -20,6 +20,6 @@ const jobSchema = new Schema({
         required: true,
     }
 })
-// Definir el modelo de empleados
+
 const Job = mongoose.model("Job", jobSchema);
 module.exports = Job;
