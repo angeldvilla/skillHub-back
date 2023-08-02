@@ -27,6 +27,5 @@ const employeSchema = new Schema({
         required: true,
     }
 })
-// Definir el modelo de empleados
 const Employe = mongoose.model("Employe", employeSchema);
 module.exports = Employe;
