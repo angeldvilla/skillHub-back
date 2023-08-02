@@ -19,7 +19,7 @@ const employeSchema = new Schema({
         required: true,
     },
     description: {
-        type: String,
+        type: Text,
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
