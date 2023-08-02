@@ -19,7 +19,7 @@ const employeSchema = new Schema({
         required: true,
     },
     description: {
-        type: String,
+        type: Text,
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -27,6 +27,5 @@ const employeSchema = new Schema({
         required: true,
     }
 })
-// Definir el modelo de empleados
 const Employe = mongoose.model("Employe", employeSchema);
 module.exports = Employe;
