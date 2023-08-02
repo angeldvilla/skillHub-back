@@ -1,3 +1,8 @@
-let chau;
 
-let suma = 2;
+const { Router } = require("express");
+const router = Router();
+
+router.get("/empleador");
+
+module.exports = router;
+
