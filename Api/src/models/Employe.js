@@ -28,4 +28,5 @@ const employeSchema = new Schema({
     }
 })
 // Definir el modelo de empleados
-const Employe = mongoose.model("Employe", employeSchema)
+const Employe = mongoose.model("Employe", employeSchema);
+module.exports = Employe;
