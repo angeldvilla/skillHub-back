@@ -1,25 +1,20 @@
 const mongoose = require ("mongoose");
 const Schema = mongoose.Schema;
 const employeSchema = new Schema({
-    name: {
-        type: String,
+    id: {
+        type: Schema.Types.ObjectId,
+       },
+    date: {
+        type: Date,
         required: true
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    address: {
-        type: String,
+    hour: {
+        type: Date,
         required: true,
     },
-    phone: {
-        type: Number,
-        required: true,
-    },
-    description: {
-        type: Text,
+    price: {
+       type: Number,
+       required: true,
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

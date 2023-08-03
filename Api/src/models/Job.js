@@ -1,9 +1,16 @@
 const mongoose = require ("mongoose");
 const Schema = mongoose.Schema;
 const jobSchema = new Schema({
+    id: {
+     type: Schema.Types.ObjectId,
+    },
     name: {
         type: String,
         required: true
+    },
+    addres: {
+       type: String,
+       required: true
     },
     description: {
         type: String,
@@ -14,9 +21,15 @@ const jobSchema = new Schema({
         type: [String],
         required: true,
     },
-    employe: {
+    phone: {
+        type: Number,
+    },
+    image: {
+        type: Text,
+    },
+    users: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Employe',
+        ref: 'User',
         required: true,
     }
 })
