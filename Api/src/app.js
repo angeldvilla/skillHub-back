@@ -3,6 +3,9 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require ("morgan");
 require("./db")
+const mongoose = require("mongoose");
+const { DB_URL } = process.env
+const port = process.env.PORT || 3002;
 const server = express();
 
  
@@ -29,6 +32,16 @@ server.use((err, req, res, next) => {
     console.error(err);
     res.status(status).send(message);
   });
+
+  mongoose
+  .connect("mongodb+srv://skillhud:adminadmin@skillhud.oovupfq.mongodb.net/?retryWrites=true&w=majority")
+  .then(() => {
+    server.listen(port, () => {
+      console.log(`Server listen on port ${port}`);
+    });
+    console.log("Connected to MongoDB Atlas")
+  })
+  .catch((error) => console.log(console.error(error)));
   
   
 module.exports = server;
