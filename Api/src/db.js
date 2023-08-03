@@ -26,8 +26,6 @@ async function run() {
     }
 }
 
-const Employe = require("./Models/Employe")
-const Job = require("./Models/Job")
-const Usuario = require("./Models/usuario")
+
 
 run().catch(console.dir);
