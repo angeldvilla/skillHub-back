@@ -1,9 +1,7 @@
 const mongoose = require ("mongoose");
 const Schema = mongoose.Schema;
-const employeSchema = new Schema({
-    id: {
-        type: Schema.Types.ObjectId,
-       },
+const paymentSchema = new Schema({
+
     date: {
         type: Date,
         required: true
@@ -22,5 +20,5 @@ const employeSchema = new Schema({
         required: true,
     }
 })
-const Employe = mongoose.model("Employe", employeSchema);
-module.exports = Employe;
+const Payment = mongoose.model("Payment", paymentSchema);
+module.exports = Payment;
