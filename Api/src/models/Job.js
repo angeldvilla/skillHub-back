@@ -5,6 +5,10 @@ const jobSchema = new Schema({
         type: String,
         required: true
     },
+    address: {
+       type: String,
+       required: true
+    },
     description: {
         type: String,
         required: true,
@@ -14,9 +18,15 @@ const jobSchema = new Schema({
         type: [String],
         required: true,
     },
-    employe: {
+    phone: {
+        type: Number,
+    },
+    image: {
+        type: Text,
+    },
+    users: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Employe',
+        ref: 'User',
         required: true,
     }
 })
