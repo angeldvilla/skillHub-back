@@ -25,7 +25,9 @@ async function run() {
         await client.close();
     }
 }
-
+const User = require("./models/User")
+const Payment = require("./models/Payment")
+const Job = require("./models/Job")
 
 
 run().catch(console.dir);
