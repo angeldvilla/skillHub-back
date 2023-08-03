@@ -5,7 +5,7 @@ const jobSchema = new Schema({
         type: String,
         required: true
     },
-    addres: {
+    address: {
        type: String,
        required: true
     },
