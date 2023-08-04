@@ -1,5 +1,6 @@
 const getAllJobs = require("../controllers/getServices");
 const deleteJobById = require("../controllers/deleteServices");
+const createPost = require("../controllers/postServices")
 
 const allJobsHandler = async (req, res) => {
   try {
