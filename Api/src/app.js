@@ -2,11 +2,14 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require ("morgan");
+const routes = require("./routes/index.js");
+server.use('/', routes);
 require("./db")
 const mongoose = require("mongoose");
 const { DB_URL } = process.env
 const port = process.env.PORT || 3002;
 const server = express();
+
 
  
 server.name = "API";
