@@ -1,9 +1,9 @@
 
 const { Router } = require("express");
 const router = Router();
-const Job = require ("../models/Job")
+const postJobs = require ("../controllers/postServices")
 router.get("/empleador");
-router.post("/create-service", async (req, res) => {
+router.post("/create", async (req, res) => {
     const {name, address, description, ability, phone, image} = req.body;
     try {
 const service = await postJobs(name, address, description, ability, phone, image);
