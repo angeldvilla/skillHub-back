@@ -4,7 +4,8 @@ const createPost = require("../controllers/postServices")
 
 const allJobsHandler = async (req, res) => {
   try {
-    const all = await getAllJobs();
+    const {_id, title} = req.query;
+    const all = await getAllJobs(_id, title);
     res.status(200).json(all);
   } catch (error) {
     res.status(400).json({ error: error.message });
