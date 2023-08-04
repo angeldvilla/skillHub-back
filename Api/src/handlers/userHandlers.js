@@ -1,12 +1,12 @@
-const registrerUser = require("../controllers/postUser")
+const { registerUser } = require("../controllers/postUser")
 
 const userHandler = async (req, res) => {
-    const {fullName, email, password} = req.body;
+    const {fullname, email, password} = req.body;
     try {
-      const result = await registrerUser(fullName, email, password)
+      const result = await registerUser(fullname, email, password)
       res.status(201).json(result);
     } catch(error) {
-      res.status(400).json({error: error.message})
+      res.status(409).json({error: error.message})
     }
 }
 
