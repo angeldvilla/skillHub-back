@@ -7,6 +7,6 @@ if(fullName && email && password) {
   return user;
 }}
 
-module.exports = registrerUser;
+module.exports = {registrerUser};
 
 
