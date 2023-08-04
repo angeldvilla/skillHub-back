@@ -3,7 +3,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require ("morgan");
 const routes = require("./routes/index.js");
-server.use('/', routes);
+
 require("./db")
 const mongoose = require("mongoose");
 const { DB_URL } = process.env
@@ -45,6 +45,7 @@ server.use((err, req, res, next) => {
     console.log("Connected to MongoDB Atlas")
   })
   .catch((error) => console.log(console.error(error)));
+  server.use('/', routes);
   
   
 module.exports = server;
