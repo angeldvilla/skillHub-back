@@ -5,7 +5,7 @@ const jobRoute = Router();
 
 jobRoute.get('/', allJobsHandler);
 jobRoute.delete('/:id', deleteJob);
-jobRoute.post('/', postJob )
+jobRoute.post('/:id', postJob )
 
 
 

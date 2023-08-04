@@ -22,14 +22,16 @@ const deleteJob = async (req, res) => {
 }
 
 const postJob = async (req, res) => {
-  const { title, users, image,phone, ability, description, address  } = req.body
+  const { title, image, phone, ability, description, address } = req.body
 
-   try {
-    const newPost = await createPost(title, users, image,phone, ability, description, address)
+  const { id } = req.params
+
+  try {
+    const newPost = await createPost(title, id, image, phone, ability, description, address)
     res.status(201).json(newPost)
-   } catch (error) {
-    res.status(409).json({error: error.message})
-   }
+  } catch (error) {
+    res.status(409).json({ error: error.message })
+  }
 }
 
 module.exports = {
