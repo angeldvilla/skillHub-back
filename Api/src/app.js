@@ -2,13 +2,15 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require ("morgan");
+
+
 require("./db")
 const mongoose = require("mongoose");
 const { DB_URL } = process.env
 const port = process.env.PORT || 3002;
 const routes = require("./routes/index")
 const server = express();
- 
+
 server.name = "API";
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
@@ -32,7 +34,7 @@ server.use((err, req, res, next) => {
     console.error(err);
     res.status(status).send(message);
   });
-server.use("/", routes)
+
   mongoose
   .connect("mongodb+srv://skillhud:adminadmin@skillhud.oovupfq.mongodb.net/?retryWrites=true&w=majority")
   .then(() => {

@@ -1,10 +1,9 @@
-
 const { Router } = require("express");
 const router = Router();
 
-router.get("/empleador");
+const jobRoute = require ('../routes/empleadoresRouter')
 
 
+router.use("/empleador", jobRoute);
 
 module.exports = router;
-
