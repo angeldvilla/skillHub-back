@@ -22,7 +22,7 @@ const jobSchema = new Schema({
         type: Number,
     },
     image: {
-        type: Text,
+        type: String,
     },
     users: {
         type: mongoose.Schema.Types.ObjectId,
