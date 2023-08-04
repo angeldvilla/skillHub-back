@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Job = require('../models/Job');
 
-const postJobs = async (name, address, description, ability, phone, image) => {
+const postJobs = async ( title, users, image,phone, ability, description, address ) => {
   try {
-    const job = new Job({ name, address, description, ability, phone, image });
+    const job = new Job({  title, users, image,phone, ability, description, address  });
      job.save();
     return job;
   } catch (error) {

@@ -1,7 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const morgan = require ("morgan");
+const morgan = require("morgan");
 
 
 require("./db")
@@ -27,15 +27,17 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
- 
-server.use((err, req, res, next) => {
-    const status = err.status || 500;
-    const message = err.message || err;
-    console.error(err);
-    res.status(status).send(message);
-  });
 
-  mongoose
+server.use((err, req, res, next) => {
+  const status = err.status || 500;
+  const message = err.message || err;
+  console.error(err);
+  res.status(status).send(message);
+});
+
+server.use("/", routes)
+
+mongoose
   .connect("mongodb+srv://skillhud:adminadmin@skillhud.oovupfq.mongodb.net/?retryWrites=true&w=majority")
   .then(() => {
     server.listen(port, () => {
@@ -44,6 +46,6 @@ server.use((err, req, res, next) => {
     console.log("Connected to MongoDB Atlas")
   })
   .catch((error) => console.log(console.error(error)));
-  
-  
+
+
 module.exports = server;
