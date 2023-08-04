@@ -2,16 +2,15 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require ("morgan");
-const routes = require("./routes/index.js");
-server.use('/', routes);
+
+
 require("./db")
 const mongoose = require("mongoose");
 const { DB_URL } = process.env
 const port = process.env.PORT || 3002;
+const routes = require("./routes/index")
 const server = express();
 
-
- 
 server.name = "API";
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
