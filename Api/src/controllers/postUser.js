@@ -1,12 +1,12 @@
 const { Error } = require("mongoose");
 const User = require ("../models/User")
 
-const registerUser = async (fullName, email, password) => {
-if(fullName && email && password) {
+const registerUser = async (firstName, lastName,email, password,phoneNumber) => {
+if(firstName && email && password && lastName &&phoneNumber) {
 
   const emailUser = await User.find({ email })
   if(emailUser.length === 0){
-    const user = new User({fullName, email, password})
+    const user = new User({firstName,lastName, email, password,phoneNumber})
     user.save();
     return user;
   }
