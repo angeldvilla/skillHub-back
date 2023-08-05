@@ -1,10 +1,13 @@
 const { Router } = require ('express');
-const userHandler = require('../handlers/userHandlers');
+const {userHandler,allUser} = require('../handlers/userHandlers');
+
 
 
 const userRoute = Router();
 
 userRoute.post("/register", userHandler )
+
+userRoute.get("/", allUser)
 
 
 
