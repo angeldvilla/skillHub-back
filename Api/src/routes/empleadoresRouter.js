@@ -4,8 +4,10 @@ const {allJobsHandler, deleteJob, postJob } = require ('../handlers/allHandlers'
 const jobRoute = Router();
 
 jobRoute.get('/', allJobsHandler);
+
 jobRoute.delete('/:id', deleteJob);
-jobRoute.post('/:id', postJob )
+
+jobRoute.post('/:id', postJob);
 
 
 

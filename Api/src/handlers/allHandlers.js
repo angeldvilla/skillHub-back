@@ -29,9 +29,11 @@ const postJob = async (req, res) => {
 
   try {
     const newPost = await createPost(title, id, image, phone, ability, description, address)
+   
     res.status(201).json(newPost)
+   
   } catch (error) {
-    res.status(409).json({ error: error.message })
+    res.status(400).json({ error: error.message })
   }
 }
 
