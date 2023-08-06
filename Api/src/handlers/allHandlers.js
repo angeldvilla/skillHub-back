@@ -21,6 +21,7 @@ const allTypes = async (req, res) => {
 const allJobsHandler = async (req, res) => {
   try {
     const {_id, title} = req.query;
+    
     const all = await getAllJobs(_id, title);
     res.status(200).json(all);
   } catch (error) {

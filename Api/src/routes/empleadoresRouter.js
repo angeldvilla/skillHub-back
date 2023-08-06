@@ -1,7 +1,10 @@
 const {Router} = require ('express');
 const {allJobsHandler, deleteJob, postJob,postTypeJob,allTypes} = require ('../handlers/allHandlers');
+const {searchJobHandller} = require ("../handlers/searchJobHandller")
 
 const jobRoute = Router();
+
+jobRoute.get("/job" , searchJobHandller)
 
 jobRoute.get('/', allJobsHandler);
 
