@@ -8,6 +8,10 @@ const TJob = new Schema({
         type: String,
         required: true
     },
+    job: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Job', 
+    }
    
 })
 
