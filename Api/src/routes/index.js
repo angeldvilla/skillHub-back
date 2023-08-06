@@ -5,9 +5,14 @@ const jobRoute = require ('../routes/empleadoresRouter');
 const userRoute = require("./userRouter");
 
 
+
 router.use("/empleador", jobRoute);
 
-router.use("/user", userRoute )
+router.use("/user", userRoute);
+
+
+
+
 
 
 

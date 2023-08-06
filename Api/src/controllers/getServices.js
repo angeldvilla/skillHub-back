@@ -7,6 +7,7 @@ const getAllJobs = async (_id, title) => {
         if(_id) {
              jobs = await Job.find({_id})
         } else if (title) {
+            
             jobs = await Job.find({title})
 
         } else {
