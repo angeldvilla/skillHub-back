@@ -1,24 +1,24 @@
 const { Error } = require("mongoose");
-const User = require ("../models/User")
+const User = require("../models/User");
 
-const registerUser = async (firstName, lastName,email, password,phoneNumber) => {
-if(firstName && email && password && lastName &&phoneNumber) {
+const registerUser = async (firstName, lastName, email, password, phoneNumber) => {
+  if (firstName && lastName && email && password && phoneNumber) {
+    const emailUser = await User.find({ email });
 
-  const emailUser = await User.find({ email })
-  if(emailUser.length === 0){
-    const user = new User({firstName,lastName, email, password,phoneNumber})
-    user.save();
-    return user;
+    if (emailUser.length === 0) {
+      try {
+        const user = new User({ firstName, lastName, email, password, phoneNumber });
+        await user.save();
+        return user;
+      } catch (error) {
+        throw new Error("Error while saving the user: " + error.message);
+      }
+    } else {
+      throw new Error("Este Usuario ya fue creado!");
+    }
+  } else {
+    throw new Error("Please provide all required user information.");
   }
-  else{
-    throw new Error("Este Usuario ya fue creado!")
-  }
-}}
-
-
-
-
+};
 
 module.exports = { registerUser };
-
-
