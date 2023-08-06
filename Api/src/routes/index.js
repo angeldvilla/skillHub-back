@@ -9,4 +9,6 @@ router.use("/empleador", jobRoute);
 
 router.use("/user", userRoute )
 
+
+
 module.exports = router;

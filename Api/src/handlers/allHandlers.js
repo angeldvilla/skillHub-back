@@ -1,6 +1,22 @@
 const getAllJobs = require("../controllers/getServices");
 const deleteJobById = require("../controllers/deleteServices");
 const createPost = require("../controllers/postServices")
+const createTypeJob = require ('../controllers/typeJob')
+const getAllType = require ('../controllers/getAllType')
+
+
+
+const allTypes = async (req, res) => {
+  try {
+    const allTypesJob = await getAllType();
+
+    res.status(200).json(allTypesJob);
+    
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 
 const allJobsHandler = async (req, res) => {
   try {
@@ -35,9 +51,25 @@ const postJob = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message })
   }
+};
+const postTypeJob = async (req, res) => {
+  console.log('entro al handler')
+  
+   const {title} = req.body;
+   try {
+    const result = await createTypeJob(title)
+    if(!result){return console.log('udefined')}
+    
+    res.status(231).json(result);
+  } catch(error) {
+    console.log('estoy en el error')
+   res.status(409).json({error: error.message})
+  }
 }
 
 module.exports = {
+  allTypes,
+  postTypeJob,
   allJobsHandler,
   deleteJob,
   postJob
