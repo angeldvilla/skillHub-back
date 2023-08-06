@@ -39,12 +39,12 @@ const deleteJob = async (req, res) => {
 }
 
 const postJob = async (req, res) => {
-  const { title, image, phone, ability, description, address } = req.body
+  const { title, image, price, ability, description, address } = req.body
 
   const { id } = req.params
 
   try {
-    const newPost = await createPost(title, id, image, phone, ability, description, address)
+    const newPost = await createPost(title, id, image, price, ability, description, address)
    
     res.status(201).json(newPost)
    

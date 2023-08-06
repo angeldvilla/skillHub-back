@@ -20,7 +20,7 @@ const jobSchema = new Schema({
         required: true,
     },
     price: {
-        type: Number,
+        type: String,
     },
     image: {
         type: String,

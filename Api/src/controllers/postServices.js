@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const Job = require('../models/Job');
 const User = require('../models/User');
 
-const createPost = async (title, userId, image, phone, ability, description, address) => {
+const createPost = async (title, userId, image, price, ability, description, address) => {
   try {
 
     const job = new Job({
       title,
       users: [userId], 
       image,
-      phone,
+      price,
       ability,
       description,
       address,
@@ -25,3 +25,4 @@ const createPost = async (title, userId, image, phone, ability, description, add
 };
 
 module.exports = createPost;
+
