@@ -1,9 +1,9 @@
 const getAllJobs = require("../controllers/getServices");
 const deleteJobById = require("../controllers/deleteServices");
 const createPost = require("../controllers/postServices")
-const createTypeJob = require ('../controllers/typeJob')
+const {createTypeJob} = require ('../controllers/postTypeJob')
 const getAllType = require ('../controllers/getAllType')
-
+const deleteTypeById = require ('../controllers/deleteTypeJob');
 
 
 const allTypes = async (req, res) => {
@@ -54,24 +54,32 @@ const postJob = async (req, res) => {
   }
 };
 const postTypeJob = async (req, res) => {
-  console.log('entro al handler')
   
-   const {title} = req.body;
+   const {category} = req.body
+  const { id } = req.params
+
    try {
-    const result = await createTypeJob(title)
-    if(!result){return console.log('udefined')}
+    const result = await createTypeJob(category, id)
     
-    res.status(231).json(result);
+    res.status(201).json(result);
   } catch(error) {
-    console.log('estoy en el error')
    res.status(409).json({error: error.message})
   }
 }
-
+const deleteType = async (req, res) => {
+  const { id } = req.params
+  try {
+    const category = await deleteTypeById(id);
+    category ? res.status(200).json(category) : res.status(400).json({ error: 'Category not found' })
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
 module.exports = {
   allTypes,
   postTypeJob,
   allJobsHandler,
   deleteJob,
-  postJob
+  postJob,
+  deleteType
 };

@@ -1,5 +1,6 @@
 const { registerUser } = require("../controllers/postUser")
 const {getAllUser} = require ("../controllers/getUsers")
+const {deleteUserById} = require ("../controllers/deleteUser");
 
 const userHandler = async (req, res) => {
   
@@ -21,6 +22,17 @@ const allUser = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+const deleteUser = async (req, res) => { 
+  const { id } = req.params;
+  try { 
+  const user = await deleteUserById(id);
+  user ? res.status(200).json(user) : res.status(400).json({error: error.message})
+  } catch (error) { 
+  res.status(400).json({ error: error.message})
+  } 
+  }
 
-module.exports ={ userHandler, 
-  allUser};
+module.exports ={ 
+  userHandler, 
+  allUser,
+deleteUser};

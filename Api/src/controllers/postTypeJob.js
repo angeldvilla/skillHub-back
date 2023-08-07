@@ -1,10 +1,10 @@
 const { Error } = require("mongoose");
 const TypeJob = require("../models/TypeJob");
 
-const createTypeJob = async (title) => {
+const createTypeJob = async (category, jobId) => {
 
       try {
-        const job = await new TypeJob({title});
+        const job = new TypeJob({category, job: [jobId]});
 
         await job.save();
 
@@ -19,4 +19,4 @@ const createTypeJob = async (title) => {
 };
 
 
-module.exports =  createTypeJob ;
+module.exports =  {createTypeJob} ;

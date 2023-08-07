@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const TJob = new Schema({
     
-    title: {
+    category: {
         type: String,
         required: true
     },
