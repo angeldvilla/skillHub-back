@@ -1,38 +1,49 @@
-const { registerUser } = require("../controllers/postUser")
-const {getAllUser} = require ("../controllers/getUsers")
-const {deleteUserById} = require ("../controllers/deleteUser");
+const { getUsersData } = require("../controllers/getUsers");
+const { postUserData } = require("../controllers/postUser");
+const { deleteUserById } = require("../controllers/deleteUser");
+const User = require("../models/User");
 
-const userHandler = async (req, res) => {
-  
-    const {firstName,lastName,email, password, phoneNumber} = req.body;
-    try {
-      const result = await registerUser(firstName, lastName,email,password, phoneNumber)
-      if(!result){return console.log('udefined')}
-      
-      res.status(231).json(result);
-    } catch(error) {
-      res.status(409).json({error: error.message})
-    }
-}
-const allUser = async (req, res) => {
+const getUsers = async (req, res) => {
   try {
-    const allUser = await getAllUser();
-    res.status(200).json(allUser);
+    res.status(200).json(await getUsersData());
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
-const deleteUser = async (req, res) => { 
-  const { id } = req.params;
-  try { 
-  const user = await deleteUserById(id);
-  user ? res.status(200).json(user) : res.status(400).json({error: error.message})
-  } catch (error) { 
-  res.status(400).json({ error: error.message})
-  } 
-  }
 
-module.exports ={ 
-  userHandler, 
-  allUser,
-deleteUser};
+const getUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    res.status(200).json(await User.findById(id));
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const postUser = async (req, res) => {
+  const userData = req.body;
+  try {
+    res.status(231).json(await postUserData(userData));
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+};
+
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await deleteUserById(id);
+    user
+      ? res.status(200).json(user)
+      : res.status(400).json({ error: error.message });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  getUsers,
+  getUser,
+  postUser,
+  deleteUser,
+};
