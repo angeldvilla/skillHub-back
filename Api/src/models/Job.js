@@ -23,7 +23,7 @@ const jobSchema = new Schema({
         type: String,
     },
     image: {
-        type: String,
+        type: [String],
     },
     users:{
         type: mongoose.Schema.Types.ObjectId,
