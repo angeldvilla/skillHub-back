@@ -1,14 +1,16 @@
-const { Router } = require ('express');
-const {userHandler,allUser, deleteUser} = require('../handlers/userHandlers');
-
-
+const { Router } = require("express");
+const {
+  getUsers,
+  getUser,
+  postUser,
+  deleteUser,
+} = require("../handlers/userHandlers");
 
 const userRoute = Router();
 
-userRoute.post("/register", userHandler )
-userRoute.delete("/:id", deleteUser)
-userRoute.get("/", allUser)
-
-
+userRoute.get("/", getUsers);
+userRoute.get("/:id", getUser);
+userRoute.post("/register", postUser);
+userRoute.delete("/:id", deleteUser);
 
 module.exports = userRoute;
