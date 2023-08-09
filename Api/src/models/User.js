@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const users = new Schema({
+  uid: {
+    type: String,
+    required: true,
+  },
   firstName: {
     type: String,
     required: true,
@@ -14,10 +18,6 @@ const users = new Schema({
     type: Schema.Types.Mixed,
     required: true,
     unique: true,
-  },
-  password: {
-    type: Schema.Types.Mixed,
-    required: true,
   },
   phoneNumber: {
     type: String,
