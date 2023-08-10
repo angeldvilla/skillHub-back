@@ -1,9 +1,14 @@
 const mongoose = require ("mongoose");
 const Schema = mongoose.Schema;
+
 const jobSchema = new Schema({
-    name: {
+    title: {
         type: String,
         required: true
+    },
+    address: {
+       type: String,
+       required: true
     },
     description: {
         type: String,
@@ -14,11 +19,17 @@ const jobSchema = new Schema({
         type: [String],
         required: true,
     },
-    employe: {
+    price: {
+        type: String,
+    },
+    image: {
+        type: [String],
+    },
+    users:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Employe',
-        required: true,
-    }
+        ref: 'User', 
+    },
+  
 })
 
 const Job = mongoose.model("Job", jobSchema);

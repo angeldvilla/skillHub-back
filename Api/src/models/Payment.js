@@ -2,11 +2,11 @@ const mongoose = require ("mongoose");
 const Schema = mongoose.Schema;
 const paymentSchema = new Schema({
 
-    date: {
-        type: Date,
+    plan: {
+        type: String,
         required: true
     },
-    hour: {
+    date: {
         type: Date,
         required: true,
     },
@@ -18,7 +18,8 @@ const paymentSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
-    }
+    },
+      
 })
 const Payment = mongoose.model("Payment", paymentSchema);
 module.exports = Payment;
