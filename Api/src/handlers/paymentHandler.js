@@ -1,7 +1,6 @@
 const { getPaymentData } = require('../controllers/getPayment');
 const deletePaymentById = require("../controllers/deletePayment");
-const postMercadoPago = require('../controllers/postPayment');
-
+const {postMercadoPago} = require('../controllers/postPayment');
 const getHandlerPayment = async (req, res) => {
   try {
     res.status(200).json(await getPaymentData());
@@ -10,14 +9,13 @@ const getHandlerPayment = async (req, res) => {
   }
 };
 const postHandlerPayment = async (req, res) => {
-  const { plan, price} = req.body;
+  const { plan, price, message} = req.body;
   const { id } = req.params;
 
   try {
-    const response = await postMercadoPago(id, plan, price);
+    const response = await postMercadoPago(id, plan, price, message);
     res.status(200).json({
       message: 'Pago creado exitosamente',
-      paymentId: response.paymentId,
       preferenceUrl: response.preferenceUrl,
     });
   } catch (error) {
@@ -27,6 +25,8 @@ const postHandlerPayment = async (req, res) => {
     });
   }
 };
+
+
 const deletePayment = async (req, res) => {
   const { id } = req.params
   try {
