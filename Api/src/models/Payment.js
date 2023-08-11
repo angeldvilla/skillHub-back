@@ -6,10 +6,6 @@ const paymentSchema = new Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        required: true,
-    },
     price: {
        type: Number,
        required: true,
@@ -19,7 +15,13 @@ const paymentSchema = new Schema({
         ref: 'User',
         required: true,
     },
-      
-})
+    state: {
+        type: String,
+        default: true,
+    }
+    },
+    {
+        timestamps: true
+    })
 const Payment = mongoose.model("Payment", paymentSchema);
 module.exports = Payment;
