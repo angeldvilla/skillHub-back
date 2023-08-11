@@ -7,12 +7,6 @@ const postUserData = async (userData) => {
       throw new Error("Missing data.");
     }
 
-    const emailUser = await User.find({ email: userData.email });
-
-    if (emailUser.length) {
-      throw new Error("Email already registered.");
-    }
-
     const user = new User(userData);
     await user.save();
 

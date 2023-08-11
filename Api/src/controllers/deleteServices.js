@@ -9,6 +9,6 @@ const deleteJobById = async (id) => {
     throw new Error('Database error');
   }
 };
-
+//delete
 module.exports = deleteJobById;
 
