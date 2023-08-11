@@ -4,17 +4,11 @@ require("dotenv").config();
 
 mercadopago.configure({ access_token: process.env.MERCADOPAGO_KEY });
 
-const postMercadoPago = async (userId, plan, price) => {
+const postMercadoPago = async (userId, plan, price, message) => {
   try {
-    const payment = new Payment({
-      plan,
-      price,
-      user: userId,
-
-    });
-    await payment.save();
-
+if(!message){
     let preference = {
+
       items: [
         {
           title: `Plan ${plan}`,
@@ -26,7 +20,7 @@ const postMercadoPago = async (userId, plan, price) => {
         },
       ],
       back_urls: {
-        success: "http://localhost:3002/empleador",
+        success: "http://localhost:5173/mensage_Pago",
         failure: "",
         pending: "",
       },
@@ -39,15 +33,24 @@ const postMercadoPago = async (userId, plan, price) => {
       frequency: 1,
       frequency_type: "months",
     
-      
+
     }
-
     const preferenceResponse = await mercadopago.preferences.create(preference);
-
     return {
-      paymentId: payment._id,
+      //paymentId: payment._id,
       preferenceUrl: preferenceResponse.body.init_point,
     };
+   } else {
+
+    const payment = new Payment({
+      plan,
+      price,
+      user: userId,
+    });
+  
+    await payment.save()
+    return payment;
+  }
   } catch (error) {
     throw new Error("No se pudo crear el pago");
   }
@@ -55,4 +58,7 @@ const postMercadoPago = async (userId, plan, price) => {
 
 
 
-module.exports = postMercadoPago;
+module.exports = {
+  postMercadoPago,
+
+};
