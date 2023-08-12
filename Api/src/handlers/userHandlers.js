@@ -14,7 +14,12 @@ const getUsers = async (req, res) => {
 const getUser = async (req, res) => {
   const { id } = req.params;
   try {
-    res.status(200).json(await getUserById(id));
+    const user = await getUserById(id);
+    if (!user) {
+      res.status(404).json({ error: "User not found" });
+    } else {
+      res.status(200).json(user);
+    }
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: error.message });
