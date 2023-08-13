@@ -3,6 +3,7 @@ const { getPaymentData } = require('../controllers/getPayment');
 const deletePaymentById = require("../controllers/deletePayment");
 const {postMercadoPago} = require('../controllers/postPayment');
 const { error } = require('console');
+const confirmPay = require('../controllers/postConfirmPay');
 
 
 const getHandlerPayment = async (req, res) => {
@@ -17,10 +18,8 @@ const postHandlerPayment = async (req, res) => {
   const { id } = req.params;
   try {
     const response = await postMercadoPago(id, plan, price);
-    const paymentId = response.payment._id;
     res.status(200).json({
       message: 'Pago creado exitosamente',
-      paymentId: paymentId,
       preferenceUrl: response.preferenceUrl,
     });
   } catch (error) {
@@ -55,43 +54,22 @@ const success = (req, res) => {
     res.status(400).json({error: error.message})
   }
     }
-    //res.status(200).redirect(http://localhost:5173/mensaje/${encodeURIComponent(infoJson)});
-   // res.status(200).json(info);
 
-
-// const getPay = async (req, res) => {
-//   const {collection_id,
-//     collection_status,
-//     payment_id,
-//     status,
-//     external_reference,
-//     payment_type,
-//     merchant_order_id,
-//     preference_id,
-//     site_id,
-//     processing_mode,
-//     merchant_account_id} = req.body
-//   try {
-//     res.status(200).json(await confirmPay(collection_id,
-//       collection_status,
-//       payment_id,
-//       status,
-//       external_reference,
-//       payment_type,
-//       merchant_order_id,
-//       preference_id,
-//       site_id,
-//       processing_mode,
-//       merchant_account_id));
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// }
+    const confirmPayHandler = async (req, res) => {
+      const {plan, price, user, state, compra_Id} = req.body;
+      try {
+const response = await confirmPay(plan, price, user, state, compra_Id)
+res.status(200).json(response);
+      } catch (error) {
+res.status(400).json({error: error.message})
+      }
+    }
+    
 
 module.exports = {
   getHandlerPayment,
   postHandlerPayment,
   deletePayment,
-  //getPay
-  success
+  success,
+  confirmPayHandler
 };
