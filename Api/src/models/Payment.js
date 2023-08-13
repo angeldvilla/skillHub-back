@@ -16,11 +16,11 @@ const paymentSchema = new Schema({
     },
     state: {
         type: String,
-       default: 'pending',
+        required: true,  
     },
     compra_Id: {
         type: String,
-        default: true,
+        required: true,
     }
     },
     {

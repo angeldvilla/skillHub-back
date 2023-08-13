@@ -35,18 +35,8 @@ const postMercadoPago = async (userId, plan, price) => {
     };
 
     const preferenceResponse = await mercadopago.preferences.create(preference);
-    console.log(preferenceResponse);
     
-    const payment = new Payment({
-      plan,
-      price,
-      user: userId,
-
-    });
-    await payment.save();
     return {
-      payment: payment,
-      
       id_venta: preferenceResponse.body.id,
       id_cliente:preferenceResponse.body.client_id,
       preferenceUrl: preferenceResponse.body.init_point,
@@ -56,33 +46,7 @@ const postMercadoPago = async (userId, plan, price) => {
   }
 };
 
-// const confirmPay = async (collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id,
-//   site_id, processing_mode, merchant_account_id) => {
-//     let url = 'http://localhost:5174/next';
-// try {
-//   if (url && status === 'approved') {
-//     const paymentData = {
-//       collection_id,
-//       collection_status,
-//       payment_id,
-//       status,
-//       external_reference,
-//       payment_type,
-//       merchant_order_id,
-//       preference_id,
-//       site_id,
-//       processing_mode,
-//       merchant_account_id
-//     };
-//     console.log(paymentData)
-//     return paymentData;
-//   }
-// } catch (error) {
-// throw new Error({error: error.message})
-// }
 
-//}
 module.exports = {
   postMercadoPago,
-  //confirmPay
 };
