@@ -1,7 +1,6 @@
 const mongoose = require ("mongoose");
 const Schema = mongoose.Schema;
 const paymentSchema = new Schema({
-
     plan: {
         type: String,
         required: true
@@ -16,6 +15,10 @@ const paymentSchema = new Schema({
         required: true,
     },
     state: {
+        type: String,
+       default: 'pending',
+    },
+    compra_Id: {
         type: String,
         default: true,
     }
