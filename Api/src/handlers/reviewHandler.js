@@ -1,4 +1,5 @@
-const Review = require("../models/Review")
+const Review = require("../models/Reviews")
+
 
 const getReviewsHandler = async (req, res) => {
 
