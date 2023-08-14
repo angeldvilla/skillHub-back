@@ -4,7 +4,7 @@ const { getHandlerPayment, postHandlerPayment, deletePayment, success, confirmPa
 const paymentRouter = Router();
 
 paymentRouter.get("/", getHandlerPayment)
-paymentRouter.get("/success", success)
+paymentRouter.get("/success/:id", success)
 paymentRouter.post("/save", confirmPayHandler)
 paymentRouter.post("/:id", postHandlerPayment)
 paymentRouter.delete("/:id", deletePayment)
