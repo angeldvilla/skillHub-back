@@ -20,7 +20,7 @@ const postMercadoPago = async (userId, plan, price) => {
         },
       ],
       back_urls: {
-        success: "http://localhost:3001/payment/success",
+        success: `http://localhost:3001/payment/success/${userId}`,
         failure: "",
         pending: "",
       },

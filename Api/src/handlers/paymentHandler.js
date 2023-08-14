@@ -41,6 +41,7 @@ const deletePayment = async (req, res) => {
   }
 };
 const success = (req, res) => {
+  const { id } = req.params;
   try {
   const info = req.query.payment_id;
       console.log(req.query)
@@ -49,7 +50,7 @@ const success = (req, res) => {
         throw new Error({error: error.message});
       }
   
-      res.status(200).redirect(`http://localhost:5174/next/${info}`);
+      res.status(200).redirect(`http://localhost:5174/user-panel/${id}/next/${info}`);
   } catch (error) {
     res.status(400).json({error: error.message})
   }
