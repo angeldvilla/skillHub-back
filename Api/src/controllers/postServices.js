@@ -7,7 +7,7 @@ const createPost = async (title, userId, image, price, ability, description, add
 
     const job = new Job({
       title,
-      users: [userId], 
+      users: userId, 
       image,
       price,
       ability,
