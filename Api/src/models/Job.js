@@ -26,7 +26,7 @@ const jobSchema = new Schema({
         type: [String],
     },
     users:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'User', 
     },
   
