@@ -4,6 +4,7 @@ const deletePaymentById = require("../controllers/deletePayment");
 const {postMercadoPago} = require('../controllers/postPayment');
 const { error } = require('console');
 const confirmPay = require('../controllers/postConfirmPay');
+const putPayment = require('../controllers/putPayment');
 
 
 const getHandlerPayment = async (req, res) => {
@@ -65,6 +66,16 @@ res.status(200).json(response);
 res.status(400).json({error: error.message})
       }
     }
+    const putPaymentHandler = async (req, res) => {
+      const {subscription } = req.body;
+      const {id} = req.params;
+      try {
+          res.status(200).json(await putPayment(subscription, id))
+      } catch (error) {
+   res.status(400).json({error: error.message})       
+          
+      }
+  }
     
 
 module.exports = {
@@ -72,5 +83,6 @@ module.exports = {
   postHandlerPayment,
   deletePayment,
   success,
-  confirmPayHandler
+  confirmPayHandler,
+  putPaymentHandler
 };
