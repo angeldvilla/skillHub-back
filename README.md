@@ -38,7 +38,7 @@ Este es el backend de SkillHub, una aplicación que conecta a personas con habil
    MERCADOPAGO_ACCESS_TOKEN=your-mercadopago-access-token
    JWT_SECRET=your-jwt-secret
    
-Inicia el servidor: npm start
+## Inicia el servidor: npm start
 Endpoints
 A continuación se enumeran algunos de los puntos finales (endpoints) que se trabajan de forma local de acuerdo al puerto donde se levante el servidor:
 
@@ -56,11 +56,11 @@ http://localhost:port/reviews: Gestión de calificaciones(Recibir las calificaci
 http://localhost:port/administrador: Gestión de un usuario super administrador(Dashboard para ver las acciones de la pagina)
 
 ...
-Contribución
+## Contribución
 Si deseas contribuir a este proyecto, ¡estamos encantados de recibir tus aportaciones! Puedes hacerlo a través de pull requests.
 
-Licencia
+## Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para obtener más detalles.
 
-Este README proporciona una descripción detallada de las tecnologías utilizadas, cómo configurar el proyecto y una visión general de los endpoints de la API. También incluye secciones para contribuciones y la licencia del proyecto. 
+## Este README proporciona una descripción detallada de las tecnologías utilizadas, cómo configurar el proyecto y una visión general de los endpoints de la API. También incluye secciones para contribuciones y la licencia del proyecto. 
 Puedes personalizarlo aún más según las necesidades de tu proyecto. ¡Espero que te sea útil!
