@@ -6,9 +6,13 @@ const getUsersByName = async (name) => {
       firstName: { $regex: name, $options: "i" },
     });
 
-    return users;
-  } catch (error) {
+    if (users.length) {
+      return users;
+    }
+
     throw new Error("No se encontraron usuarios con ese nombre");
+  } catch (error) {
+    throw new Error(error.message);
   }
 };
 
