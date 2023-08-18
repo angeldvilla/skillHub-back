@@ -24,6 +24,12 @@ const usersSchema = new Schema({
     type: String,
     required: true,
   },
+  habilitar: {
+    type: Boolean,
+    default: false,
+  },
+
+  
  
 });
 
