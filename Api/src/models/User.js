@@ -22,7 +22,6 @@ const usersSchema = new Schema({
   },
   phoneNumber: {
     type: String,
-    required: true,
   },
   image: {
     type: String,
