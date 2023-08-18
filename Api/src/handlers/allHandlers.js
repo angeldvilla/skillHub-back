@@ -4,6 +4,7 @@ const createPost = require("../controllers/postServices")
 const {createTypeJob} = require ('../controllers/postTypeJob')
 const getAllType = require ('../controllers/getAllType')
 const deleteTypeById = require ('../controllers/deleteTypeJob');
+const putJob = require("../controllers/putJob");
 
 
 const allTypes = async (req, res) => {
@@ -75,11 +76,23 @@ const deleteType = async (req, res) => {
     res.status(400).json({ error: error.message })
   }
 }
+const putJobHandler = async (req, res) => {
+  const { address, description, price, image, ability} = req.body;
+  const {id} = req.params;
+  try {
+      res.status(200).json(await putJob(address, description, price, image, ability, id))
+  } catch (error) {
+res.status(400).json({error: error.message})       
+      
+  }
+}
+
 module.exports = {
   allTypes,
   postTypeJob,
   allJobsHandler,
   deleteJob,
   postJob,
-  deleteType
+  deleteType,
+  putJobHandler
 };
