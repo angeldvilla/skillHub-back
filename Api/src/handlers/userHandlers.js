@@ -1,11 +1,15 @@
 const { getUsersData } = require("../controllers/getUsers");
+const { getUsersByName } = require("../controllers/getUsersByName");
 const { getUserById } = require("../controllers/getUser");
 const { postUserData } = require("../controllers/postUser");
 const { deleteUserById } = require("../controllers/deleteUser");
 
 const getUsers = async (req, res) => {
+  const { name } = req.query;
   try {
-    res.status(200).json(await getUsersData());
+    name
+      ? res.status(200).json(await getUsersByName(name))
+      : res.status(200).json(await getUsersData());
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
