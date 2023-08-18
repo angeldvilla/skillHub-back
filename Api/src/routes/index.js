@@ -28,23 +28,16 @@ router.use("/reviews", reviewsRouter)
 router.use("/administrador", adminRouter)
 router.post("/twilio/:number", (req, res) => {
   const { number } = req.params
-  
   try {
-    
     const client = require("twilio")(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN)
     client.messages.create({
       from: 'whatsapp:+14155238886',
       body: 'Bienvenido a SkillHud',
       to: `whatsapp:${number}`
     })
-    
-
     console.log(number)
        res.status(201).send("mensaje enviado")
   } catch (error){   
-
-
-
        res.status(404).json({error: error.message})
 }       
 
