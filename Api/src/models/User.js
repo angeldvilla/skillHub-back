@@ -24,6 +24,11 @@ const usersSchema = new Schema({
     type: String,
    
   },
+  habilitar: {
+    type: Boolean,
+    default: false,
+  },
+
   image: {
     type: String,
   }
