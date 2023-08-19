@@ -4,6 +4,8 @@ const deletePaymentById = require("../controllers/deletePayment");
 const {postMercadoPago} = require('../controllers/postPayment');
 const { error } = require('console');
 const confirmPay = require('../controllers/postConfirmPay');
+const putPayment = require('../controllers/putPayment');
+const { getAllPaymentUserId } = require('../controllers/getAllPaymentUserId');
 
 
 const getHandlerPayment = async (req, res) => {
@@ -13,6 +15,19 @@ const getHandlerPayment = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+
+const getPaymentUserId = async (req, res) => {
+  const {id}= req.params
+  try {
+    res.status(200).json(await getAllPaymentUserId(id));
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+
+
 const postHandlerPayment = async (req, res) => {
   const { plan, price} = req.body;
   const { id } = req.params;
@@ -65,6 +80,16 @@ res.status(200).json(response);
 res.status(400).json({error: error.message})
       }
     }
+    const putPaymentHandler = async (req, res) => {
+      const {subscription } = req.body;
+      const {id} = req.params;
+      try {
+          res.status(200).json(await putPayment(subscription, id))
+      } catch (error) {
+   res.status(400).json({error: error.message})       
+          
+      }
+  }
     
 
 module.exports = {
@@ -72,5 +97,7 @@ module.exports = {
   postHandlerPayment,
   deletePayment,
   success,
-  confirmPayHandler
+  confirmPayHandler,
+  putPaymentHandler,
+  getPaymentUserId
 };

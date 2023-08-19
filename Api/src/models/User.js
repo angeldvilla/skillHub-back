@@ -22,8 +22,21 @@ const usersSchema = new Schema({
   },
   phoneNumber: {
     type: String,
-    required: true,
+   
   },
+  habilitar: {
+    type: Boolean,
+    default: false,
+  },
+
+  image: {
+    type: String,
+  },
+  pay:{
+    type:mongoose.Types.ObjectId,
+    ref: 'Payment',
+  }
+ 
 });
 
 const User = mongoose.model("User", usersSchema);

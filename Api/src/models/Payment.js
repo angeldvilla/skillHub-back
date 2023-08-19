@@ -21,7 +21,11 @@ const paymentSchema = new Schema({
     compra_Id: {
         type: String,
         required: true,
-    }
+    },
+    subscription: {
+        type: Boolean,
+        default: true,
+      }
     },
     {
         timestamps: true
