@@ -22,8 +22,13 @@ const usersSchema = new Schema({
   },
   phoneNumber: {
     type: String,
-    required: true,
+   
   },
+  habilitar: {
+    type: Boolean,
+    default: false,
+  },
+
   image: {
     type: String,
   },
