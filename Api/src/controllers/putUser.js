@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 
 
-const putUser = async (id,{pay}) => {
+const putUser = async (id,{firstName,lastName,email,phoneNumber,habilitar,image,pay}) => {
     try {
         const result = await User.findOneAndUpdate( { uid: id },
-            {pay},
+            {firstName,lastName,email,phoneNumber,habilitar,image,pay},
             { new: true });
        
         await result.save();
