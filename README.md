@@ -23,7 +23,7 @@
    
    <a href="https://www.mercadopago.com/" target="_blank" rel="noreferrer"> 
    <img src="https://seeklogo.com/images/M/mercadopago-logo-FC9BA7420E-seeklogo.com.png" 
-   alt="JSON Web Token" width="40" height="40"/> </a>  
+   alt="JSON Web Token" width="auto" height="auto"/> </a>  
    
    <a href="https://jwt.io/" target="_blank" rel="noreferrer"> 
    <img src="https://cdn.worldvectorlogo.com/logos/json.svg" 
