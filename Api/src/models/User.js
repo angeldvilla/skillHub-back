@@ -35,7 +35,6 @@ const usersSchema = new Schema({
   pay:{
     type:mongoose.Types.ObjectId,
     ref: 'Payment',
-    default:null
   }
  
 });
