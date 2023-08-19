@@ -3,6 +3,7 @@ const { getUsersByName } = require("../controllers/getUsersByName");
 const { getUserById } = require("../controllers/getUser");
 const { postUserData } = require("../controllers/postUser");
 const { deleteUserById } = require("../controllers/deleteUser");
+const putUser = require("../controllers/putUser");
 
 const getUsers = async (req, res) => {
   const { name } = req.query;
@@ -51,9 +52,22 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const updateUser= async(req,res)=>{
+  const {firstName,lastName,email,phoneNumber,habilitar,image,pay} = req.body;
+  const { id } = req.params;
+  try {
+    const result = await putUser(id,{firstName,lastName,email,phoneNumber,habilitar,image,pay});
+    res.status(200).json(result)
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+  
+}
+
 module.exports = {
   getUsers,
   getUser,
   postUser,
   deleteUser,
+  updateUser
 };
