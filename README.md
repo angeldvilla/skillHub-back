@@ -22,7 +22,7 @@
    alt="Cloudinary" width="40" height="40"/> </a> 
    
    <a href="https://www.mercadopago.com/" target="_blank" rel="noreferrer"> 
-   <img src="https://getlogovector.com/wp-content/uploads/2021/09/mercado-pago-logo-vector.png" 
+   <img src="https://seeklogo.com/images/M/mercadopago-logo-FC9BA7420E-seeklogo.com.png" 
    alt="JSON Web Token" width="40" height="40"/> </a>  
    
    <a href="https://jwt.io/" target="_blank" rel="noreferrer"> 
@@ -67,14 +67,14 @@ Este es el backend de SkillHub, una aplicación que conecta a personas con habil
 - http://localhost:port/empleador: Gestión de los servicios (Ver todos los servicios, publicar un servicio, editar un servicio, desactivar un servicio, 
 buscar por nombre y coincidencias).
 - http://localhost:port/empleador/allType: Gestión de las categorias en las que clasifica un servicio.
-----------
+
 - http://localhost:port/user: Gestión de usuarios (Ver los usuarios registrados en la página, buscar un usuario en especifico, y su respectiva desactivación)
 http://localhost:port/user/register: Gestión de registro de usuario (Registro del usuario, desde login o register)
-----------
+
 - http://localhost:port/payment: Procesamiento de pagos a través de MercadoPago.
-----------
+
 - http://localhost:port/reviews: Gestión de calificaciones(Recibir las calificaciones de los usuarios hacia la pagina)
-----------
+
 - http://localhost:port/administrador: Gestión de un usuario super administrador(Dashboard para ver las acciones de la pagina)
 
 ------------
