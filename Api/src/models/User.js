@@ -26,6 +26,11 @@ const usersSchema = new Schema({
   },
   image: {
     type: String,
+  },
+  pay:{
+    type:mongoose.Types.ObjectId,
+    ref: 'Payment',
+    default:null
   }
  
 });
