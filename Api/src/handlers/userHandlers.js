@@ -53,10 +53,10 @@ const deleteUser = async (req, res) => {
 };
 
 const updateUser= async(req,res)=>{
-  const {pay} = req.body;
+  const {firstName,lastName,email,phoneNumber,habilitar,image,pay} = req.body;
   const { id } = req.params;
   try {
-    const result = await putUser(id,{pay});
+    const result = await putUser(id,{firstName,lastName,email,phoneNumber,habilitar,image,pay});
     res.status(200).json(result)
   } catch (error) {
     res.status(400).json({ error: error.message });
