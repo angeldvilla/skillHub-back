@@ -20,7 +20,7 @@ const postMercadoPago = async (userId, plan, price) => {
         },
       ],
       back_urls: {
-        success: `http://localhost:3001/payment/success/${userId}`,
+        success: `skillhub-back-production.up.railway.app/payment/success/${userId}`,
         failure: "",
         pending: "",
       },
