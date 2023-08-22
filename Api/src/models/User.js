@@ -26,7 +26,7 @@ const usersSchema = new Schema({
   },
   habilitar: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 
   image: {
