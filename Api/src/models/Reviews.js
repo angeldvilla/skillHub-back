@@ -5,6 +5,9 @@ const reviewSchema = new Schema({
     score: {
         type: Number,
         required: true
+    }, 
+    message: {
+        type: String
     }
     },
     {
