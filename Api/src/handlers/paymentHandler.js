@@ -65,7 +65,7 @@ const success = (req, res) => {
         throw new Error({error: error.message});
       }
   
-      res.status(200).redirect(`http://localhost:5173/user-panel/${id}/next/${info}`);
+      res.status(200).redirect(`skillhub-back-production.up.railway.app/user-panel/${id}/next/${info}`);
   } catch (error) {
     res.status(400).json({error: error.message})
   }
