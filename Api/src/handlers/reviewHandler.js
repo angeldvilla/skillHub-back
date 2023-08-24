@@ -17,11 +17,12 @@ const getReviewsHandler = async (req, res) => {
 
 const postReviewHandler = async (req, res) => {
 
-    const { score } = req.body
+    const { score, message } = req.body
 
     try {
         const newScore = new Review({
-            score
+            score,
+            message
         })
         await newScore.save()
 
