@@ -1,16 +1,22 @@
-
-const mongoose = require ('mongoose');
-
 const TypeJob = require("../models/TypeJob");
 
 const getAllType = async () => {
-   
-    try{
-        const typesJob = await TypeJob.find()
-            return typesJob;
-    } catch (error) {
-        throw new Error('DataBase not found')
-    }
-}
+  try {
+    const jobCategories = await TypeJob.find();
+    const filteredCategories = jobCategories.filter(
+      (jobCategory) => jobCategory.category !== "Todas"
+    );
+    const sortedCategories = filteredCategories.sort((a, b) =>
+      a.category.localeCompare(b.category)
+    );
+    const todas = jobCategories.find(
+      (jobCategory) => jobCategory.category === "Todas"
+    );
 
-module.exports = getAllType
+    return [todas, ...sortedCategories];
+  } catch (error) {
+    throw new Error("DataBase not found");
+  }
+};
+
+module.exports = getAllType;
