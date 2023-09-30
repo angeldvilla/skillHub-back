@@ -82,5 +82,4 @@ http://localhost:port/user/register: Gestión de registro de usuario (Registro d
 Si deseas contribuir a este proyecto, ¡estamos encantados de recibir tus aportaciones! Puedes hacerlo a través de pull requests.
 
 ------------
-Este README proporciona una descripción detallada de las tecnologías utilizadas, cómo configurar el proyecto y una visión general de los endpoints de la API. También incluye secciones para contribuciones y la licencia del proyecto. 
-Puedes personalizarlo aún más según las necesidades de tu proyecto. ¡Espero que te sea útil!
+Este README proporciona una descripción detallada de las tecnologías utilizadas, cómo configurar el proyecto y una visión general de los endpoints de la API. También incluye secciones para contribuciones y la licencia del proyecto.
