@@ -33,10 +33,10 @@ export class JobService {
     }
   }
 
-  async findOne(id: string) {
+  async findOne(id: number) {
     try {
       const job = await this.jobSchema.query.jobs.findFirst({
-        where: eq(schema.jobs.id, +id),
+        where: eq(schema.jobs.id, id),
       });
 
       if (!job) throw new Error('Job not found');
@@ -48,12 +48,12 @@ export class JobService {
     }
   }
 
-  async update(id: string, updateJobDto: UpdateJobDto) {
+  async update(id: number, updateJobDto: UpdateJobDto) {
     try {
       const job = await this.jobSchema
         .update(schema.jobs)
         .set(updateJobDto)
-        .where(eq(schema.jobs.id, +id))
+        .where(eq(schema.jobs.id, id))
         .returning();
 
       if (!job) throw new Error('Job not found');
@@ -65,11 +65,11 @@ export class JobService {
     }
   }
 
-  async remove(id: string) {
+  async remove(id: number) {
     try {
       const removed = await this.jobSchema
         .delete(schema.jobs)
-        .where(eq(schema.jobs.id, +id))
+        .where(eq(schema.jobs.id, id))
         .returning();
 
       if (!removed) throw new Error('Job not found');

@@ -12,7 +12,7 @@ import { CreateJobDto } from './dto/create-job.dto';
 import { UpdateJobDto } from './dto/update-job.dto';
 import { JobService } from './job.service';
 
-@Controller('jobs')
+@Controller('job')
 export class JobController {
   constructor(private readonly jobService: JobService) {}
 
@@ -28,7 +28,7 @@ export class JobController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.jobService.findOne(id);
+    return this.jobService.findOne(+id);
   }
 
   @Patch(':id')
@@ -36,11 +36,11 @@ export class JobController {
     @Param('id') id: string,
     @Body(new ValidationPipe()) updateJobDto: UpdateJobDto,
   ) {
-    return this.jobService.update(id, updateJobDto);
+    return this.jobService.update(+id, updateJobDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.jobService.remove(id);
+    return this.jobService.remove(+id);
   }
 }
