@@ -1,6 +1,10 @@
 import { IsNumber, IsPositive, IsString, IsUrl, Length } from 'class-validator';
 
 export class CreateJobDto {
+  @IsNumber()
+  @IsPositive()
+  id!: number;
+
   @IsString()
   @Length(5, 50)
   title!: string;
@@ -25,5 +29,6 @@ export class CreateJobDto {
   @IsString()
   image!: string;
 
-  // TODO: Add user_id relationship
+  @IsNumber()
+  userId!: number;
 }
