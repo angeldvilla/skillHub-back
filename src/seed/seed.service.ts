@@ -13,8 +13,9 @@ export class SeedService {
   async seed() {
     const jobs: CreateJobDto[] = mockJobs;
     try {
-      console.log('Clearing database...');
-      await this.skillhub.delete(schema.jobs);
+      // TODO: After the first run, make sure to uncomment these lines below to clear the database
+      // console.log('Clearing database...');
+      // await this.skillhub.delete(schema.jobs);
 
       console.log('Seeding database...');
       await this.skillhub.insert(schema.jobs).values(jobs);
