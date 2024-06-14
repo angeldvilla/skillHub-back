@@ -26,25 +26,26 @@ export class UserService {
 
   async findAll() {
     try {
-      return await this.userSchema.query.jobs.findMany();
+      return await this.userSchema.query.users.findMany();
     } catch (error) {
       const err = error as Error;
-      throw new Error(`Failed to retrieve jobs: ${err.message}`);
+      throw new Error(`Failed to retrieve users: ${err.message}`);
     }
   }
 
   async findOne(id: number) {
     try {
-      const job = await this.userSchema.query.jobs.findFirst({
-        where: eq(schema.jobs.id, id),
+      const user = await this.userSchema.query.users.findFirst({
+        where: eq(schema.users.id, id),
+        with: { jobs: true },
       });
 
-      if (!job) throw new Error('Job not found');
+      if (!user) throw new Error('User not found');
 
-      return job;
+      return user;
     } catch (error) {
       const err = error as Error;
-      throw new Error(`Failed to retrieve job: ${err.message}`);
+      throw new Error(`Failed to retrieve user: ${err.message}`);
     }
   }
 
