@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { JobModule } from './job/job.module';
 import { SeederModule } from './seed/seed.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { SeederModule } from './seed/seed.module';
     }),
     JobModule,
     SeederModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
