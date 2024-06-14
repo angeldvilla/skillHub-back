@@ -12,7 +12,7 @@ import { UserModule } from './user/user.module';
   imports: [
     ConfigModule.forRoot(),
     DrizzlePGModule.register({
-      tag: 'DB_DEV',
+      tag: 'DB_SKILLHUB',
       pg: {
         config: {
           connectionString: process.env.DATABASE_URL,

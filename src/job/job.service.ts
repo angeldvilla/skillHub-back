@@ -8,7 +8,7 @@ import { UpdateJobDto } from './dto/update-job.dto';
 @Injectable()
 export class JobService {
   constructor(
-    @Inject('DB_DEV')
+    @Inject('DB_SKILLHUB')
     private readonly jobSchema: NodePgDatabase<typeof schema>,
   ) {}
 

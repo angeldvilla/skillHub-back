@@ -8,7 +8,8 @@ import { mockJobs, mockUsers } from './seed-data';
 @Injectable()
 export class SeedService {
   constructor(
-    @Inject('DB_DEV') private readonly skillhub: NodePgDatabase<typeof schema>,
+    @Inject('DB_SKILLHUB')
+    private readonly drizzle: NodePgDatabase<typeof schema>,
   ) {}
 
   async seed() {
@@ -17,12 +18,14 @@ export class SeedService {
     try {
       // TODO: After the first run, make sure to uncomment these lines below to clear the database
       // console.log('Clearing database...');
-      // await this.skillhub.delete(schema.users);
-      // await this.skillhub.delete(schema.jobs);
+      // await Promise.all([
+      //   this.drizzle.delete(schema.users),
+      //   this.drizzle.delete(schema.jobs),
+      // ]);
 
       console.log('Seeding database...');
-      await this.skillhub.insert(schema.users).values(users);
-      await this.skillhub.insert(schema.jobs).values(jobs);
+      await this.drizzle.insert(schema.users).values(users);
+      await this.drizzle.insert(schema.jobs).values(jobs);
 
       console.log('Database seeded!');
     } catch (error) {

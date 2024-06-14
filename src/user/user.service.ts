@@ -8,7 +8,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 @Injectable()
 export class UserService {
   constructor(
-    @Inject('DB_DEV')
+    @Inject('DB_SKILLHUB')
     private readonly userSchema: NodePgDatabase<typeof schema>,
   ) {}
 
