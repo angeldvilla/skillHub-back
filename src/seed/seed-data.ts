@@ -1,3 +1,5 @@
+import { UserRole } from '../db/schema';
+
 export const mockJobs = [
   {
     id: 1,
@@ -7,6 +9,7 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 1,
   },
   {
     id: 2,
@@ -16,6 +19,7 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 1,
   },
   {
     id: 3,
@@ -25,6 +29,7 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 2,
   },
   {
     id: 4,
@@ -34,6 +39,7 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 2,
   },
   {
     id: 5,
@@ -43,6 +49,7 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 3,
   },
   {
     id: 6,
@@ -52,6 +59,7 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 3,
   },
   {
     id: 7,
@@ -61,6 +69,7 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 4,
   },
   {
     id: 8,
@@ -70,6 +79,7 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 4,
   },
   {
     id: 9,
@@ -79,6 +89,7 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 5,
   },
   {
     id: 10,
@@ -88,5 +99,49 @@ export const mockJobs = [
     location: 'Remote',
     wage: 10000,
     image: 'https://via.placeholder.com/150',
+    userId: 5,
+  },
+];
+
+export const mockUsers = [
+  {
+    id: 1,
+    email: 'JnJt3@gmail.com',
+    isActive: true,
+    name: 'John Doe',
+    password: 'john12doe',
+    role: UserRole.ADMIN,
+  },
+  {
+    id: 2,
+    email: 'O6ds9d@gmail.com',
+    isActive: true,
+    name: 'Harold Doe',
+    password: 'harold12doe',
+    role: UserRole.USER,
+  },
+  {
+    id: 3,
+    email: 'IOid2@gmail.com',
+    isActive: true,
+    name: 'Mike Smith',
+    password: 'mike12smith',
+    role: UserRole.USER,
+  },
+  {
+    id: 4,
+    email: 'IO2kl@gmail.com',
+    isActive: true,
+    name: 'Steve Jobs',
+    password: 'job12steve',
+    role: UserRole.USER,
+  },
+  {
+    id: 5,
+    email: 'O6ds9d@gmail.com',
+    isActive: true,
+    name: 'Ryan Air',
+    password: 'ryan12air',
+    role: UserRole.USER,
   },
 ];
