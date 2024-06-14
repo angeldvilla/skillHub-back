@@ -1,4 +1,12 @@
-import { IsNumber, IsPositive, IsString, IsUrl, Length } from 'class-validator';
+import { JobCategory } from '@/db/schema';
+import {
+  IsNumber,
+  IsPositive,
+  IsEnum,
+  IsString,
+  IsUrl,
+  Length,
+} from 'class-validator';
 
 export class CreateJobDto {
   @IsNumber()
@@ -13,9 +21,8 @@ export class CreateJobDto {
   @Length(10, 500)
   description!: string;
 
-  @IsString()
-  @Length(5, 50)
-  category!: string;
+  @IsEnum(JobCategory)
+  category!: JobCategory;
 
   @IsString()
   @Length(5, 80)

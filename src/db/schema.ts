@@ -9,11 +9,32 @@ import {
 } from 'drizzle-orm/pg-core';
 
 export enum UserRole {
-  USER = 'USER',
   ADMIN = 'ADMIN',
+  USER = 'USER',
+}
+
+export enum JobCategory {
+  EDUCATION = 'EDUCATION',
+  HEALTHCARE = 'HEALTHCARE',
+  IT = 'IT',
+  LOGISTIC = 'LOGISTIC',
+  OCCUPATIONS = 'OCCUPATIONS',
+  OTHER = 'OTHER',
+  SALES = 'SALES',
+  TOURISM = 'TOURISM',
 }
 
 export const userEnum = pgEnum('role', [UserRole.ADMIN, UserRole.USER]);
+export const categoryEnum = pgEnum('category', [
+  JobCategory.EDUCATION,
+  JobCategory.HEALTHCARE,
+  JobCategory.IT,
+  JobCategory.LOGISTIC,
+  JobCategory.OCCUPATIONS,
+  JobCategory.OTHER,
+  JobCategory.SALES,
+  JobCategory.TOURISM,
+]);
 
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
@@ -30,7 +51,7 @@ export const userRelations = relations(users, ({ many }) => ({
 
 export const jobs = pgTable('jobs', {
   id: serial('id').primaryKey(),
-  category: text('category').notNull(),
+  category: categoryEnum('category').notNull().default(JobCategory.OTHER),
   description: text('description').notNull(),
   image: text('image').notNull(),
   location: text('location').notNull(),
