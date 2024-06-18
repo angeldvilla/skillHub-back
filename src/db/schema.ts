@@ -8,33 +8,13 @@ import {
   text,
 } from 'drizzle-orm/pg-core';
 
+// Users
 export enum UserRole {
   ADMIN = 'ADMIN',
   USER = 'USER',
 }
 
-export enum JobCategory {
-  EDUCATION = 'EDUCATION',
-  HEALTHCARE = 'HEALTHCARE',
-  IT = 'IT',
-  LOGISTIC = 'LOGISTIC',
-  OCCUPATIONS = 'OCCUPATIONS',
-  OTHER = 'OTHER',
-  SALES = 'SALES',
-  TOURISM = 'TOURISM',
-}
-
 export const userEnum = pgEnum('role', [UserRole.ADMIN, UserRole.USER]);
-export const categoryEnum = pgEnum('category', [
-  JobCategory.EDUCATION,
-  JobCategory.HEALTHCARE,
-  JobCategory.IT,
-  JobCategory.LOGISTIC,
-  JobCategory.OCCUPATIONS,
-  JobCategory.OTHER,
-  JobCategory.SALES,
-  JobCategory.TOURISM,
-]);
 
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
@@ -48,6 +28,29 @@ export const users = pgTable('users', {
 export const userRelations = relations(users, ({ many }) => ({
   jobs: many(jobs),
 }));
+
+// Jobs
+export enum JobCategory {
+  EDUCATION = 'EDUCATION',
+  HEALTHCARE = 'HEALTHCARE',
+  IT = 'IT',
+  LOGISTIC = 'LOGISTIC',
+  OCCUPATIONS = 'OCCUPATIONS',
+  OTHER = 'OTHER',
+  SALES = 'SALES',
+  TOURISM = 'TOURISM',
+}
+
+export const categoryEnum = pgEnum('category', [
+  JobCategory.EDUCATION,
+  JobCategory.HEALTHCARE,
+  JobCategory.IT,
+  JobCategory.LOGISTIC,
+  JobCategory.OCCUPATIONS,
+  JobCategory.OTHER,
+  JobCategory.SALES,
+  JobCategory.TOURISM,
+]);
 
 export const jobs = pgTable('jobs', {
   id: serial('id').primaryKey(),
