@@ -37,6 +37,7 @@ export class JobService {
     try {
       const job = await this.jobSchema.query.jobs.findFirst({
         where: eq(schema.jobs.id, id),
+        with: { user: true },
       });
 
       if (!job) throw new Error('Job not found');
