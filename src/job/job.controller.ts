@@ -6,9 +6,11 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   ValidationPipe,
 } from '@nestjs/common';
 import { CreateJobDto } from './dto/create-job.dto';
+import { FilterJobDto } from './dto/filter-job.dto';
 import { UpdateJobDto } from './dto/update-job.dto';
 import { JobService } from './job.service';
 
@@ -22,8 +24,32 @@ export class JobController {
   }
 
   @Get()
-  findAll() {
-    return this.jobService.findAll();
+  findAll(
+    @Query('category') category?: FilterJobDto['category'],
+    @Query('location') location?: string,
+    @Query('title') title?: string,
+    @Query('wageOperator') wageOperator?: 'gt' | 'lt' | 'gte' | 'lte' | 'eq',
+    @Query('wageValue') wageValue?: number,
+  ) {
+    const filters: FilterJobDto = {};
+
+    if (category) {
+      filters.category = category;
+    }
+
+    if (location) {
+      filters.location = location;
+    }
+
+    if (title) {
+      filters.title = title;
+    }
+
+    if (wageOperator && wageValue !== undefined) {
+      filters.wage = { operator: wageOperator, value: wageValue };
+    }
+
+    return this.jobService.findAll(filters);
   }
 
   @Get(':id')
