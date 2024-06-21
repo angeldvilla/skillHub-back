@@ -1,8 +1,8 @@
 import { JobCategory } from '@/db/schema';
 import {
+  IsEnum,
   IsNumber,
   IsPositive,
-  IsEnum,
   IsString,
   IsUrl,
   Length,
