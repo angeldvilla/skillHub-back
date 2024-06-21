@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { JobModule } from './job/job.module';
 import { SeederModule } from './seed/seed.module';
 import { UserModule } from './user/user.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UserModule } from './user/user.module';
     JobModule,
     SeederModule,
     UserModule,
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
