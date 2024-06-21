@@ -1,8 +1,9 @@
 import * as schema from '@/db/schema';
 import { Inject, Injectable } from '@nestjs/common';
-import { eq } from 'drizzle-orm';
+import { eq, gt, gte, ilike, lt, lte } from 'drizzle-orm';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { CreateJobDto } from './dto/create-job.dto';
+import { FilterJobDto } from './dto/filter-job.dto';
 import { UpdateJobDto } from './dto/update-job.dto';
 
 @Injectable()
@@ -24,9 +25,54 @@ export class JobService {
     }
   }
 
-  async findAll() {
+  async findAll(filters: FilterJobDto) {
+    const query = this.jobSchema.select().from(schema.jobs);
+
+    if (filters.category) {
+      query.where(eq(schema.jobs.category, filters.category));
+    }
+
+    if (filters.description) {
+      query.where(ilike(schema.jobs.description, `%${filters.description}%`));
+    }
+
+    if (filters.location) {
+      query.where(ilike(schema.jobs.location, `%${filters.location}%`));
+    }
+
+    if (filters.title) {
+      query.where(ilike(schema.jobs.title, `%${filters.title}%`));
+    }
+
+    if (filters.wage) {
+      const { operator, value } = filters.wage;
+      switch (operator) {
+        case 'gt':
+          query.where(gt(schema.jobs.wage, value));
+          break;
+        case 'lt':
+          query.where(lt(schema.jobs.wage, value));
+          break;
+        case 'gte':
+          query.where(gte(schema.jobs.wage, value));
+          break;
+        case 'lte':
+          query.where(lte(schema.jobs.wage, value));
+          break;
+        case 'eq':
+          query.where(eq(schema.jobs.wage, value));
+          break;
+        default:
+          break;
+      }
+    }
+
     try {
-      return await this.jobSchema.query.jobs.findMany();
+      const jobs = await query;
+
+      if (!jobs) throw new Error('Jobs not found');
+
+      return jobs;
     } catch (error) {
       const err = error as Error;
       throw new Error(`Failed to retrieve jobs: ${err.message}`);
