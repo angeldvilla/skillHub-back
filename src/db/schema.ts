@@ -36,7 +36,7 @@ export enum JobCategory {
   IT = 'IT',
   LOGISTIC = 'LOGISTIC',
   OCCUPATIONS = 'OCCUPATIONS',
-  OTHER = 'OTHER',
+  OTHERS = 'OTHERS',
   SALES = 'SALES',
   TOURISM = 'TOURISM',
 }
@@ -47,14 +47,14 @@ export const categoryEnum = pgEnum('category', [
   JobCategory.IT,
   JobCategory.LOGISTIC,
   JobCategory.OCCUPATIONS,
-  JobCategory.OTHER,
+  JobCategory.OTHERS,
   JobCategory.SALES,
   JobCategory.TOURISM,
 ]);
 
 export const jobs = pgTable('jobs', {
   id: serial('id').primaryKey(),
-  category: categoryEnum('category').notNull().default(JobCategory.OTHER),
+  category: categoryEnum('category').notNull().default(JobCategory.OTHERS),
   description: text('description').notNull(),
   image: text('image').notNull(),
   location: text('location').notNull(),
