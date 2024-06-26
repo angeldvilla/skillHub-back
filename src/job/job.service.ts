@@ -32,10 +32,6 @@ export class JobService {
       query.where(eq(schema.jobs.category, filters.category));
     }
 
-    if (filters.description) {
-      query.where(ilike(schema.jobs.description, `%${filters.description}%`));
-    }
-
     if (filters.location) {
       query.where(ilike(schema.jobs.location, `%${filters.location}%`));
     }
