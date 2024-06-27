@@ -1,5 +1,6 @@
+import { CreateUserDto } from '@/user/dto/create-user.dto';
 import { UserService } from '@/user/user.service';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -9,13 +10,19 @@ export class AuthService {
     private readonly userService: UserService,
   ) {}
 
-  async signIn(username: string, pass: string) {
+  async validateUser(username: string, pass: string) {
     const user = await this.userService.findByUsername(username);
 
-    if (user?.password !== pass) throw new UnauthorizedException();
+    if (user?.password !== pass) return null;
 
-    const payload = { sub: user.id, username: user.username };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, ...result } = user;
 
-    return { access_token: await this.jwtService.signAsync(payload) };
+    return result;
+  }
+
+  async login(user: CreateUserDto) {
+    const payload = { username: user.username, sub: user.id };
+    return { access_token: this.jwtService.sign(payload) };
   }
 }

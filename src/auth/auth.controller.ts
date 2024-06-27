@@ -1,7 +1,5 @@
 import {
-  Body,
   Controller,
-  Get,
   HttpCode,
   HttpStatus,
   Post,
@@ -10,7 +8,6 @@ import {
 import { Request as ExpressRequest } from 'express';
 import { AuthService } from './auth.service';
 import { Public } from './decorators/public.decorator';
-import { AuthDto } from './dto/auth.dto';
 
 interface AuthenticatedRequest extends ExpressRequest {
   user?: any;
@@ -23,12 +20,7 @@ export class AuthController {
   @Public()
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  signIn(@Body() signInDto: AuthDto) {
-    return this.authService.signIn(signInDto.username, signInDto.password);
-  }
-
-  @Get('profile')
-  getProfile(@Request() req: AuthenticatedRequest) {
-    return req.user;
+  async login(@Request() req: AuthenticatedRequest) {
+    return this.authService.login(req.user);
   }
 }
