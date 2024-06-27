@@ -1,3 +1,4 @@
+import { Public } from '@/auth/decorators/public.decorator';
 import {
   Body,
   Controller,
@@ -23,6 +24,7 @@ export class JobController {
     return this.jobService.create(createJobDto);
   }
 
+  @Public()
   @Get()
   findAll(
     @Query('category') category?: FilterJobDto['category'],
@@ -52,6 +54,7 @@ export class JobController {
     return this.jobService.findAll(filters);
   }
 
+  @Public()
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.jobService.findOne(+id);
