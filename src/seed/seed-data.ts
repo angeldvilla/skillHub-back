@@ -111,6 +111,7 @@ export const mockUsers = [
     name: 'John Doe',
     password: 'john12doe',
     role: UserRole.ADMIN,
+    username: 'john_doe',
   },
   {
     id: 2,
@@ -119,6 +120,7 @@ export const mockUsers = [
     name: 'Harold Doe',
     password: 'harold12doe',
     role: UserRole.USER,
+    username: 'harold_doe',
   },
   {
     id: 3,
@@ -127,6 +129,7 @@ export const mockUsers = [
     name: 'Mike Smith',
     password: 'mike12smith',
     role: UserRole.USER,
+    username: 'mike_smith',
   },
   {
     id: 4,
@@ -135,6 +138,7 @@ export const mockUsers = [
     name: 'Steve Jobs',
     password: 'job12steve',
     role: UserRole.USER,
+    username: 'steve_jobs',
   },
   {
     id: 5,
@@ -143,5 +147,6 @@ export const mockUsers = [
     name: 'Ryan Air',
     password: 'ryan12air',
     role: UserRole.USER,
+    username: 'ryan_air',
   },
 ];
