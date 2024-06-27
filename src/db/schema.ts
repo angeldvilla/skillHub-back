@@ -23,6 +23,7 @@ export const users = pgTable('users', {
   name: text('name').notNull(),
   password: text('password').notNull(),
   role: userEnum('role').notNull().default(UserRole.USER),
+  username: text('username').notNull(),
 });
 
 export const userRelations = relations(users, ({ many }) => ({
