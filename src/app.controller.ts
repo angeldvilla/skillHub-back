@@ -1,5 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Request } from '@nestjs/common';
+import { Request as ExpressRequest } from 'express';
 import { AppService } from './app.service';
+
+interface AuthenticatedRequest extends ExpressRequest {
+  user?: any;
+}
 
 @Controller()
 export class AppController {
@@ -8,5 +13,10 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('profile')
+  getProfile(@Request() req: AuthenticatedRequest) {
+    return req.user;
   }
 }
