@@ -1,3 +1,4 @@
+import { JWT_SECRET } from '@/config';
 import {
   CanActivate,
   ExecutionContext,
@@ -7,7 +8,6 @@ import {
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
-import { JWT_SECRET } from './constants';
 import { IS_PUBLIC_KEY } from './decorators/public.decorator';
 
 @Injectable()

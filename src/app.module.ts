@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { CategoryModule } from './category/category.module';
+import { DATABASE_URL } from './config';
 import { JobModule } from './job/job.module';
 import { SeederModule } from './seed/seed.module';
 import { UserModule } from './user/user.module';
@@ -16,9 +17,7 @@ import { UserModule } from './user/user.module';
     DrizzlePGModule.register({
       tag: 'DB_SKILLHUB',
       pg: {
-        config: {
-          connectionString: process.env.DATABASE_URL,
-        },
+        config: { connectionString: DATABASE_URL },
         connection: 'pool',
       },
       config: { schema: { ...schema } },
