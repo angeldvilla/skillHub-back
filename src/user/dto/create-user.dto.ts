@@ -1,7 +1,16 @@
 import { UserRole } from '@/db/schema';
-import { IsBoolean, IsEmail, IsEnum, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsEmail,
+  IsEnum,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 
 export class CreateUserDto {
+  @IsNumber()
+  id!: number;
+
   @IsBoolean()
   isActive!: boolean;
 
