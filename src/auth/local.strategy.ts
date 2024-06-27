@@ -17,5 +17,3 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     return user;
   }
 }
-
-// curl -X POST http://localhost:3001/auth/login -d '{"username": "john_doe", "password": "john12doe"}' -H "Content-Type: application/json"
