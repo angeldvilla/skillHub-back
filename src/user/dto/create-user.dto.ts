@@ -4,6 +4,7 @@ import {
   IsEmail,
   IsEnum,
   IsNumber,
+  IsOptional,
   IsString,
 } from 'class-validator';
 
@@ -12,7 +13,8 @@ export class CreateUserDto {
   id!: number;
 
   @IsBoolean()
-  isActive!: boolean;
+  @IsOptional()
+  isActive?: boolean;
 
   @IsEmail()
   email!: string;
@@ -24,7 +26,8 @@ export class CreateUserDto {
   password!: string;
 
   @IsEnum(UserRole)
-  role!: UserRole;
+  @IsOptional()
+  role?: UserRole;
 
   @IsString()
   username!: string;
