@@ -1,6 +1,6 @@
 import * as schema from '@/db/schema';
 import { Inject, Injectable } from '@nestjs/common';
-import { eq, ilike } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -24,11 +24,9 @@ export class UserService {
     }
   }
 
-  async findAll(username?: string) {
+  async findAll() {
     try {
-      return await this.userSchema.query.users.findMany({
-        where: ilike(schema.users.username, `%${username}%`),
-      });
+      return await this.userSchema.query.users.findMany();
     } catch (error) {
       const err = error as Error;
       throw new Error(`Failed to retrieve users: ${err.message}`);
