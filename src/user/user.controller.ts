@@ -1,3 +1,4 @@
+import { Public } from '@/auth/decorators/public.decorator';
 import {
   Body,
   Controller,
@@ -16,21 +17,25 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Public()
   @Post()
   create(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
 
+  @Public()
   @Get()
   findAll() {
     return this.userService.findAll();
   }
 
+  @Public()
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
   }
 
+  @Public()
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -40,6 +45,7 @@ export class UserController {
     return this.userService.update(+id, updateUserDto);
   }
 
+  @Public()
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);
